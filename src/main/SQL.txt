@@ -1,0 +1,56 @@
+CREATE DATABASE glosor;
+
+CREATE TABLE user(
+    userID INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50),
+    points INT,
+    userPassword varchar(50),
+    PRIMARY KEY (userID)
+);
+CREATE TABLE language(
+    languageID INT NOT NULL AUTO_INCREMENT,
+    languageName VARCHAR(50),
+    PRIMARY KEY (languageID)
+);
+CREATE TABLE word(
+    wordID INT NOT NULL AUTO_INCREMENT,
+    wordLanguageID INT,
+    wordName VARCHAR(50),
+    wordAnswer VARCHAR(50),
+    PRIMARY KEY (wordID),
+    FOREIGN KEY (wordLanguageID) REFERENCES Language(languageID)
+);
+CREATE TABLE sentence(
+    sentenceID INT NOT NULL AUTO_INCREMENT,
+    languageSentenceID INT,
+    sentenceName VARCHAR(50),
+    sentenceAnswer VARCHAR(50),
+    PRIMARY KEY (sentenceID),
+    FOREIGN KEY (languageSentenceID) REFERENCES Language(languageID)
+);
+
+INSERT INTO user (username, points, userPassword)
+VALUES ('Gösta','0','stenar1213');
+
+INSERT INTO language (languageName)
+VALUES ('Engelska');
+
+INSERT INTO word (wordLanguageID, wordName, wordAnswer)
+VALUES (1,'stone','sten');
+
+INSERT INTO sentence (languageSentenceID, sentenceName, sentenceAnswer)
+VALUES (1, 'William have lots of pretty stones', 'William har massa fina stenar');
+
+SELECT * FROM user;
+
+SELECT * FROM sentence;
+
+SELECT * FROM word;
+
+SELECT * FROM language;
+
+SELECT (word.wordName), (word.wordAnswer), (languageName)
+FROM word
+INNER JOIN language on language.languageID = word.wordLanguageID;
+
+DROP DATABASE glosor;
