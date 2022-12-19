@@ -3,6 +3,8 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
+@NamedQuery(query = "SELECT w FROM WordEntity w", name = "wordQuery")
+@NamedQuery(query = "SELECT COUNT(w.wordId) FROM WordEntity w", name = "countWord")
 @Table(name = "word", schema = "glosor")
 public class WordEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -85,5 +87,16 @@ public class WordEntity {
 
     public void setLanguageByWordLanguageId(LanguageEntity languageByWordLanguageId) {
         this.languageByWordLanguageId = languageByWordLanguageId;
+    }
+
+    @Override
+    public String toString() {
+        return "WordEntity{" +
+                "wordId=" + wordId +
+                ", wordLanguageId=" + wordLanguageId +
+                ", wordName='" + wordName + '\'' +
+                ", wordAnswer='" + wordAnswer + '\'' +
+                ", languageByWordLanguageId=" + languageByWordLanguageId +
+                '}';
     }
 }

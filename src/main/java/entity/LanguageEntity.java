@@ -48,4 +48,12 @@ public class LanguageEntity {
         result = 31 * result + (languageName != null ? languageName.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "LanguageEntity{" +
+                "languageId=" + languageId +
+                ", languageName='" + languageName + '\'' +
+                '}';
+    }
 }

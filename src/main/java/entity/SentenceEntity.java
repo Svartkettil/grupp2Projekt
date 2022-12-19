@@ -87,4 +87,15 @@ public class SentenceEntity {
     public void setLanguageByLanguageSentenceId(LanguageEntity languageByLanguageSentenceId) {
         this.languageByLanguageSentenceId = languageByLanguageSentenceId;
     }
+
+    @Override
+    public String toString() {
+        return "SentenceEntity{" +
+                "sentenceId=" + sentenceId +
+                ", languageSentenceId=" + languageSentenceId +
+                ", sentenceName='" + sentenceName + '\'' +
+                ", sentenceAnswer='" + sentenceAnswer + '\'' +
+                ", languageByLanguageSentenceId=" + languageByLanguageSentenceId +
+                '}';
+    }
 }
