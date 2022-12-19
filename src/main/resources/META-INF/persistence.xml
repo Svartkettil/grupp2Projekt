@@ -13,7 +13,7 @@
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/glosor"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.username" value="root"/>
-            <property name="hibernate.connection.password" value="henben223595Hb&lt;"/>
+            <property name="hibernate.connection.password" value="Skog4309"/>
         </properties>
     </persistence-unit>
 </persistence>

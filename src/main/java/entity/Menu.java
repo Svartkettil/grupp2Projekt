@@ -46,10 +46,11 @@ public class Menu {
             input = Integer.parseInt(scanner.nextLine());
             switch (input) {
                 case 1 -> languageCrud.newLanguageInput(entityManager, scanner);
-                case 2 -> languageCrud.showAllLanguage(entityManager);
-                case 3 -> languageCrud.updateLanguageInput(entityManager, scanner);
-                case 4 -> languageCrud.deleteLanguage(entityManager, scanner);
-                case 5 -> languageCrud.countLanguage(entityManager);
+                case 2 -> languageCrud.showLanguageInput(entityManager, scanner);
+                case 3 -> languageCrud.showAllLanguage(entityManager);
+                case 4 -> languageCrud.updateLanguageInput(entityManager, scanner);
+                case 5 -> languageCrud.deleteLanguage(entityManager, scanner);
+                case 6 -> languageCrud.countLanguage(entityManager);
             }
 
         }
