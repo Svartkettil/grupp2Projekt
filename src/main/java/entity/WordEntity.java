@@ -12,7 +12,7 @@ public class WordEntity {
     @Column(name = "wordID")
     private int wordId;
     @Basic
-    @Column(name = "wordLanguageID")
+    @Column(name = "wordLanguageID", insertable = false, updatable = false)
     private Integer wordLanguageId;
     @Basic
     @Column(name = "wordName")

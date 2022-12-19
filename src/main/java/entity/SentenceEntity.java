@@ -10,7 +10,7 @@ public class SentenceEntity {
     @Column(name = "sentenceID")
     private int sentenceId;
     @Basic
-    @Column(name = "languageSentenceID")
+    @Column(name = "languageSentenceID", insertable = false, updatable = false)
     private Integer languageSentenceId;
     @Basic
     @Column(name = "sentenceName")
