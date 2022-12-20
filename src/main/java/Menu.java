@@ -95,6 +95,9 @@ public class Menu {
                 case 2 -> languageMenu();
                 case 3 -> sentenceMenu();
                 case 4 -> wordMenu();
+                case 5 -> WordQuiz.askQuizQuestions(entityManager);
+                case 6 -> SentenceQuiz.askQuizQuestions(entityManager);
+                case 7 -> rankMenu();
                 case 0 -> closeProgram();
             }
         }

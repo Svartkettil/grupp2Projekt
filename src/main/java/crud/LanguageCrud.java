@@ -25,8 +25,7 @@ public class LanguageCrud {
         entityManager.persist(language);
         entityManager.getTransaction().commit();
 
-        System.out.println("Du har lagt till ett nytt språk");
-
+        System.out.println("Du har lagt till ett nytt språk!");
     }
     public static void showAllLanguage(EntityManager entityManager){
         Query query = entityManager.createNamedQuery("languageQuery");
@@ -39,7 +38,7 @@ public class LanguageCrud {
         }
     }
     public static void showLanguageInput(EntityManager entityManager, Scanner scanner){
-        System.out.println("Enter id of language you wanna see: ");
+        System.out.println("Ange ID på det språk du vill se: ");
         String id = scanner.nextLine();
         showLanguage(entityManager, Integer.parseInt(id));
     }
