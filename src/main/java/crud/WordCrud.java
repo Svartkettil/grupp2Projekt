@@ -42,7 +42,9 @@ public class WordCrud {
 
     public static void updateWord(EntityManager entityManager, Scanner scanner){
         entityManager.getTransaction().begin();
-        WordEntity word = entityManager.find( WordEntity.class, 1 );
+        showAllWord(entityManager);
+        System.out.println("Ange ID på ordet: ");
+        WordEntity word = entityManager.find( WordEntity.class, Integer.parseInt(scanner.nextLine()) );
         System.out.println("Skriv det nya ordet: ");
         word.setWordName(scanner.nextLine());
         System.out.println("Skriv in den nya översättningen: ");

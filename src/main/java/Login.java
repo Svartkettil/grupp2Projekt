@@ -10,9 +10,9 @@ public class Login {
     public static String login(EntityManager entityManager){
         System.out.println("skriv in användarnamn");
         String usr = scanner.nextLine();
-        System.out.println("skriv in lösenord");
-        String pass = scanner.next();
-        return tryToLogin(usr, pass, entityManager);
+        System.out.println("Skriv in lösenord: ");
+        String pass = scanner.nextLine();
+        activeUser=tryToLogin(usr, pass, entityManager);
     }
     public static String tryToLogin(String username, String pass, EntityManager entityManager){
         Query query = entityManager.createQuery("SELECT u FROM UserEntity u");

@@ -42,14 +42,6 @@ public class UserCrud {
         newUser(username,password);
         scanner.nextLine();
     }
-
-    public static void showUser(){
-        System.out.println("skriv in id på användare du vill se: ");
-        int id = scanner.nextInt();
-        UserEntity user = entityManager.find( UserEntity.class, id );
-        System.out.println("user ID:" + user.getUsername());
-        System.out.println("user points:" + user.getPoints());
-    }
     public static void showAllUsers(){
         Query query = entityManager.createQuery("SELECT u FROM UserEntity u");
 
