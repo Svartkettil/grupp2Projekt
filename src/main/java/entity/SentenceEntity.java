@@ -92,12 +92,10 @@ public class SentenceEntity {
 
     @Override
     public String toString() {
-        return "SentenceEntity{" +
-                "sentenceId=" + sentenceId +
-                ", languageSentenceId=" + languageSentenceId +
-                ", sentenceName='" + sentenceName + '\'' +
-                ", sentenceAnswer='" + sentenceAnswer + '\'' +
-                ", languageByLanguageSentenceId=" + languageByLanguageSentenceId +
-                '}';
+        return  " MeningsID: " + sentenceId +
+                " languageSentenceId: " + languageSentenceId +
+                " sentenceName: " + sentenceName  +
+                " sentenceAnswer: " + sentenceAnswer  +
+                " languageByLanguageSentenceId: " + languageByLanguageSentenceId;
     }
 }
