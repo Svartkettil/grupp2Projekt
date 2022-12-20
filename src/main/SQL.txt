@@ -29,6 +29,14 @@ CREATE TABLE sentence(
     FOREIGN KEY (languageSentenceID) REFERENCES Language(languageID)
 );
 
+CREATE TABLE ranking(
+  rankID INT NOT NULL AUTO_INCREMENT,
+  userName VARCHAR(50),
+  rankName VARCHAR(50),
+  rankUserID INT,
+  PRIMARY KEY (rankID)
+);
+
 INSERT INTO user (username, points, userPassword)
 VALUES ('Gösta','0','stenar1213');
 
@@ -48,6 +56,8 @@ SELECT * FROM sentence;
 SELECT * FROM word;
 
 SELECT * FROM language;
+
+SELECT * FROM ranking;
 
 SELECT (word.wordName), (word.wordAnswer), (languageName)
 FROM word
