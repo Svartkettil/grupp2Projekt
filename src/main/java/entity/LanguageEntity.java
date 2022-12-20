@@ -52,9 +52,6 @@ public class LanguageEntity {
 
     @Override
     public String toString() {
-        return "LanguageEntity{" +
-                "languageId=" + languageId +
-                ", languageName='" + languageName + '\'' +
-                '}';
+        return getLanguageName();
     }
 }
