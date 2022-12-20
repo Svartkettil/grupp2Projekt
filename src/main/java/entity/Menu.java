@@ -32,7 +32,7 @@ public class Menu {
                 case 2 -> usercrud.showUser();
                 case 3 -> usercrud.showAllUsers();
                 case 4 -> usercrud.updateUser();
-                case 5 -> usercrud.deleteUser(Integer.parseInt(scanner.nextLine()));
+                case 5 -> usercrud.deleteUser();
                 case 6 -> usercrud.countUsersQuery();
                 case 0 -> System.out.println("Exiting user menu");
             }

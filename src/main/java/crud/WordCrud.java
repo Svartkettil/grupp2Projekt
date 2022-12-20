@@ -26,11 +26,23 @@ public class WordCrud {
     }
 
     public static void wordInput(EntityManager entityManager, Scanner scanner){
-        System.out.println("Skriv in ordet: ");
+        System.out.println("Skriv in ordet: (Svenska)");
         String inputWord = scanner.nextLine();
         System.out.println("Skriv in översättningen: ");
         String inputAnswer = scanner.nextLine();
         newWord(inputWord,inputAnswer, entityManager);
+    }
+
+    public static void languageInput(EntityManager entityManager){
+        Query query = entityManager.createNamedQuery("languageQuery");
+
+        List<WordEntity> list = query.getResultList();
+
+        for( WordEntity w:list ){
+            System.out.println("WordId: " + w.getWordId() + " Ord: " + w.getWordName()
+                    + " Översättning: " + w.getWordAnswer() + " Språk: " + w.getLanguageByWordLanguageId());
+        }
+
     }
 
     public static void updateWord(EntityManager entityManager, Scanner scanner){
@@ -64,7 +76,8 @@ public class WordCrud {
         List<WordEntity> list = query.getResultList( );
 
         for( WordEntity w:list ){
-            System.out.println("WordId: " + w.getWordId() + " Ord: " + w.getWordName() + " Översättning: " + w.getWordAnswer());
+            System.out.println("WordId: " + w.getWordId() + " Ord: " + w.getWordName()
+                    + " Översättning: " + w.getWordAnswer() + " Språk: " + w.getLanguageByWordLanguageId());
         }
     }
 
