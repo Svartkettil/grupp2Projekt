@@ -10,14 +10,13 @@ import java.util.Scanner;
 
 public class WordCrud {
 
-    public static void newWord(String wordName, String wordAnswer, EntityManager entityManager){
+    public static void newWord(String wordName, String wordAnswer, EntityManager entityManager, Scanner scanner){
         entityManager.getTransaction().begin();
         WordEntity word = new WordEntity();
 
-        LanguageEntity language = entityManager.find(LanguageEntity.class, 1);
         word.setWordName(wordName);
         word.setWordAnswer(wordAnswer);
-        word.setLanguageByWordLanguageId(language);
+        word.setLanguageByWordLanguageId(languageInput(entityManager, scanner));
 
         entityManager.persist(word);
         entityManager.getTransaction().commit();
@@ -30,19 +29,15 @@ public class WordCrud {
         String inputWord = scanner.nextLine();
         System.out.println("Skriv in översättningen: ");
         String inputAnswer = scanner.nextLine();
-        newWord(inputWord,inputAnswer, entityManager);
+        newWord(inputWord,inputAnswer, entityManager, scanner);
     }
 
-    public static void languageInput(EntityManager entityManager){
-        Query query = entityManager.createNamedQuery("languageQuery");
-
-        List<WordEntity> list = query.getResultList();
-
-        for( WordEntity w:list ){
-            System.out.println("WordId: " + w.getWordId() + " Ord: " + w.getWordName()
-                    + " Översättning: " + w.getWordAnswer() + " Språk: " + w.getLanguageByWordLanguageId());
-        }
-
+    public static LanguageEntity languageInput(EntityManager entityManager, Scanner scanner){
+        LanguageCrud.showAllLanguage(entityManager);
+        System.out.println("Välj språk: (Ange id)");
+        int languageId = scanner.nextInt();
+        scanner.nextLine();
+        return entityManager.find(LanguageEntity.class, languageId);
     }
 
     public static void updateWord(EntityManager entityManager, Scanner scanner){
@@ -90,8 +85,11 @@ public class WordCrud {
     public static void showWord(EntityManager entityManager, Scanner scanner){
         System.out.println("Skriv in ordet du vill se: ");
         String wordInput = scanner.nextLine();
-        WordEntity word = entityManager.find( WordEntity.class, wordInput );
-        System.out.println("ID: " + word.getWordId() + " Ord: " + word.getWordName( )
-                + " Översättning: " + word.getWordAnswer() + " Språk: " + word.getLanguageByWordLanguageId());
+
+        Query query = entityManager.createNamedQuery("wordQuery");
+        List<WordEntity> list = query.getResultList( );
+        list.stream()
+                .filter(n -> n.getWordName().equals(wordInput))
+                .forEach(System.out::println);
     }
 }

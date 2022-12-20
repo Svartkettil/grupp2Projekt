@@ -1,5 +1,3 @@
-package entity;
-
 import crud.LanguageCrud;
 import crud.SentenceCrud;
 import crud.UserCrud;
@@ -34,7 +32,7 @@ public class Menu {
                 case 4 -> usercrud.updateUser();
                 case 5 -> usercrud.deleteUser();
                 case 6 -> usercrud.countUsersQuery();
-                case 0 -> System.out.println("Exiting user menu");
+                case 0 -> System.out.println("Lämnar användarmenyn");
             }
         }
     }
@@ -115,24 +113,24 @@ public class Menu {
     }
     public static void printSentenceMenu(){
         System.out.println("""
-                1. New sentence
-                2. Show one sentence
-                3. Show all sentence
-                4. Update one sentence
-                5. Remove one sentence
-                6. Count the sentence 
-                0. Go back
+                1. En ny mening
+                2. Visa en mening
+                3. Visa alla meningar
+                4. Uppdatera en mening
+                5. Ta bort en mening
+                6. Räkna meningar
+                0. Tillbaka
                 """);
     }
     public static void printUserMenu(){
         System.out.println("""
                 1. Skapa ny användare
-                2. visa användare
-                3. visa alla användare
-                4. ändra användare
-                5. ta bort användare
-                6. antal användare
-                0. gå ifrån menyn
+                2. Visa användare
+                3. Visa alla användare
+                4. Ändra användare
+                5. Ta bort användare
+                6. Antal användare
+                0. Gå ifrån menyn
                 """);
     }
     public static void printLanguageMenu(){
@@ -147,10 +145,13 @@ public class Menu {
     }
     public static void printMainMenu(){
         System.out.println("""
-                1. användar meny
-                2. språk meny
-                3. mening meny
-                4. ord meny
+                1. Användarmeny
+                2. Språkmeny
+                3. Meningsmeny
+                4. Ordmeny
+                5. Quiz
+                6. logga in
+                0. Avsluta program
                 """);
     }
 
