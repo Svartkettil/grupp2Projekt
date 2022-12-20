@@ -10,11 +10,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class LanguageCrud {
-    /*todo: CreateMethod done
-            ReadMethod done
-            UpdateMethod done
-            DeleteMethod done
-     */
 
     public static void newLanguageInput(EntityManager entityManager, Scanner scanner){
         System.out.println("Ange språk: ");
