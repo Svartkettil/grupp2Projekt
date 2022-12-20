@@ -19,74 +19,60 @@ public class SentenceCrud {
 
 
     private static void newSentence(String sentenceName, String sentenceAnswer){
-//        entityManager.close();
-//        entityManagerFactory.close();
         entityManager.getTransaction().begin();
         SentenceEntity Se = new SentenceEntity();
 
-        LanguageEntity LgE = entityManager.find(LanguageEntity.class, 1);
+
+        //LanguageEntity LgE = entityManager.find(LanguageEntity.class, 1);
 
         Se.setSentenceName(sentenceName);
         Se.setSentenceAnswer(sentenceAnswer);
-        Se.setLanguageByLanguageSentenceId(LgE);
+        Se.setLanguageByLanguageSentenceId(WordCrud.languageInput(entityManager, scanner));
 
-        //BokEntity bok = new BokEntity();
-        //System.out.println("Enter name of category: ");
-        //String kategoriVal = scanner.nextLine();
-        //KategoriEntity kategori = new KategoriEntity();
-        //kategori.setKategoriNamn(kategoriVal);
-        //entityManager.persist(kategori);
-        //KategoriEntity kategori = entityManager.find( KategoriEntity.class, 1);
-        //bok.setBokTitel(titel);
-        //bok.setBokForfattare(forfattare);
-        //bok.setKategoriByBokKategoriId(kategori);
 
         entityManager.persist(Se);
         entityManager.getTransaction().commit();
 
-        System.out.println("You have added a new sentence ");
+        System.out.println("Du har lagt till en ny mening.");
 
     }
 
     public static void Sentenceinput(){
-        System.out.println("Write a sentence:  ");
+        System.out.println("Skriv en mening(SVE):  ");
         String inputSentence = scanner.nextLine();
-        System.out.println("Write the translation(in SWE):  ");
+        System.out.println("Skriv en översättning:  ");
         String inputAnswer = scanner.nextLine();
         newSentence(inputSentence,inputAnswer);
         scanner.nextLine();
     }
 
     public static void showSentence(){
-        Query query = entityManager.createNamedQuery("sentenceQuery");
-
-        List<SentenceEntity> list = query.getResultList();
-        for (SentenceEntity w:list){
-            System.out.println("The ID: "+ w.getSentenceId()+ "Sentence: "+ w.getSentenceName()
-                    + "translation: "+ w.getSentenceAnswer());
-        }
-
-//        System.out.println("Enter id of book you wanna se: ");
-//        int id = scanner.nextInt();
-//        BokEntity bok = entityManager.find( BokEntity.class, id );
-//        System.out.println("Bok ID = " + bok.getBokId( ));
-//        System.out.println("Bok Titel = " + bok.getBokTitel( ));
-//        System.out.println("Kategori = " + bok.getKategoriByBokKategoriId());
+        System.out.println("Vad är ID: ");
+        int sentenceInput = scanner.nextInt();
+        SentenceEntity Se = entityManager.find( SentenceEntity.class, sentenceInput );
+        System.out.println("ID: " + Se.getSentenceId() + " Mening: " + Se.getSentenceName( )
+                +"\n"+ " Översättning: " + Se.getSentenceAnswer() + " Språk: " + Se.getLanguageByLanguageSentenceId());
     }
+
+
 
     public static void updateSentence(){
         entityManager.getTransaction().begin();
-        SentenceEntity Se = entityManager.find( SentenceEntity.class, 1 );
-        Se.setSentenceName("New sentence: "+ scanner.nextLine());
-        Se.setSentenceAnswer("New translation(in SWE): "+ scanner.nextLine());
+        System.out.println("Välj ett ID: ");
+        String id = scanner.nextLine();
+        SentenceEntity Se = entityManager.find( SentenceEntity.class, Integer.parseInt(id));
+        System.out.println("Ny mening: ");
+        Se.setSentenceName(scanner.nextLine());
+        System.out.println("Översättningen: ");
+        Se.setSentenceAnswer(scanner.nextLine());
         entityManager.persist(Se);
         entityManager.getTransaction().commit();
 
-        System.out.println("You have updated the sentence");
+        System.out.println("Du har uppdaterat en mening.");
     }
 
     public static void deleteSentence(){
-        System.out.println("What is the id for the sentence that you like to delete: ");
+        System.out.println("Välj ett ID för den meningen du vill ta bort: ");
         String id = scanner.nextLine();
         entityManager.getTransaction().begin();
         SentenceEntity Se = entityManager.find( SentenceEntity.class, Integer.parseInt(id));
@@ -94,7 +80,7 @@ public class SentenceCrud {
         entityManager.remove(Se);
         entityManager.getTransaction().commit();
 
-        System.out.println("The sentence will be back");
+        System.out.println("Meningen har tagits bort.(It will be back)");
     }
 
     public static void showAllSentence(){
@@ -103,13 +89,13 @@ public class SentenceCrud {
         List<SentenceEntity> list = query.getResultList();
 
         for (SentenceEntity s:list){
-            System.out.println("Id: "+ s.getSentenceId()+"Sentence: "+s.getSentenceName()
-            +"translation"+ s.getSentenceAnswer());
+            System.out.println("ID: "+ s.getSentenceId()+" Mening:  "+s.getSentenceName()
+            +"\n"+" Översättning: "+ s.getSentenceAnswer());
         }
     }
 
     public static void timeToCount(){
         Query query = entityManager.createNamedQuery("countSentence");
-        System.out.println("Sentence number: " + query.getSingleResult());
+        System.out.println("Hur många meningar man har: " + query.getSingleResult());
     }
 }

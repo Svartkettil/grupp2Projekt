@@ -3,6 +3,8 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
+@NamedQuery(query = "SELECT s FROM SentenceEntity s", name = "sentenceQuery")
+@NamedQuery(query = "SELECT COUNT(s.sentenceId) FROM SentenceEntity s", name = "countSentence")
 @Table(name = "sentence", schema = "glosor")
 public class SentenceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
