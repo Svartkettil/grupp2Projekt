@@ -3,7 +3,9 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ranking", schema = "glosor", catalog = "")
+@Table(name = "ranking", schema = "glosor")
+@NamedQuery(query = "SELECT r FROM RankingEntity r", name = "rankQuery")
+@NamedQuery(query = "SELECT r FROM RankingEntity r WHERE r.rankName = :rank", name = "rankNameQuery")
 public class RankingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

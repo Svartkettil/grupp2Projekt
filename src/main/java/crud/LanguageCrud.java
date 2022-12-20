@@ -44,11 +44,10 @@ public class LanguageCrud {
     }
     private static void showLanguage(EntityManager entityManager, int id){
         LanguageEntity language = entityManager.find( LanguageEntity.class, id );
-        System.out.println("Språk ID = " + language.getLanguageId());
-        System.out.println("Språknamn: = " + language.getLanguageName());
+        System.out.println("SpråkID = " + language.getLanguageId() +" Språknamn = " + language.getLanguageName());
     }
     public static void updateLanguageInput(EntityManager entityManager, Scanner scanner){
-        System.out.println("Ange id på det språk du vill ändra: ");
+        System.out.println("Ange ID på det språk du vill ändra: ");
         String id = scanner.nextLine();
         System.out.println("Ange nytt namn på språket: ");
         String languageName = scanner.nextLine();
@@ -65,7 +64,7 @@ public class LanguageCrud {
 
     }
     public static void deleteLanguage(EntityManager entityManager, Scanner scanner){
-        System.out.println("Ange id på det språket du vill utrota: ");
+        System.out.println("Ange ID på det språket du vill utrota: ");
         String id = scanner.nextLine();
         entityManager.getTransaction().begin();
         LanguageEntity language = entityManager.find( LanguageEntity.class, Integer.parseInt(id));

@@ -1,7 +1,4 @@
-import crud.LanguageCrud;
-import crud.SentenceCrud;
-import crud.UserCrud;
-import crud.WordCrud;
+import crud.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -85,6 +82,22 @@ public class Menu {
         }
 
     }
+    public static void rankMenu(){
+        int input=-1;
+        RankingCrud rankingCrud = new RankingCrud();
+        while (input!=0){
+            printRankMenu();
+            input = Integer.parseInt(scanner.nextLine());
+            switch (input){
+                case 1 -> rankingCrud.newRankedUserInput();
+                case 2 -> rankingCrud.showAllRankedUsers();
+                case 3 -> rankingCrud.updateRankedUser();
+                case 4 -> rankingCrud.deleteRankedUser();
+                case 5 -> rankingCrud.countRankedUsersQuery();
+            }
+        }
+
+    }
     public static void mainMenu(){
         int input=-1;
         while (input!=0){
@@ -101,6 +114,19 @@ public class Menu {
                 case 0 -> closeProgram();
             }
         }
+    }
+    public static void printRankMenu(){
+        System.out.println("""
+                1. Skapa ny rankad användare
+                2. Visa alla rankade användare
+                3. Ändra rankad användare
+                4. Ta bort rankad användare
+                5. Visa antal rankade användare
+                0. Gå tillbaka
+                """);
+
+
+
     }
     public static void printWordMenu(){
         System.out.println("""

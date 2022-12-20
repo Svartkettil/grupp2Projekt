@@ -21,7 +21,7 @@ public class WordCrud {
         entityManager.persist(word);
         entityManager.getTransaction().commit();
 
-        System.out.println("Du har lagt till ett nytt ord");
+        System.out.println("Du har lagt till ett nytt ord.");
     }
 
     public static void wordInput(EntityManager entityManager, Scanner scanner){
@@ -34,7 +34,7 @@ public class WordCrud {
 
     public static LanguageEntity languageInput(EntityManager entityManager, Scanner scanner){
         LanguageCrud.showAllLanguage(entityManager);
-        System.out.println("Välj språk: (Ange id)");
+        System.out.println("Välj språk: (Ange ID)");
         int languageId = scanner.nextInt();
         scanner.nextLine();
         return entityManager.find(LanguageEntity.class, languageId);
@@ -52,11 +52,11 @@ public class WordCrud {
         entityManager.persist(word);
         entityManager.getTransaction().commit();
 
-        System.out.println("Du har uppdaterat ordet");
+        System.out.println("Du har uppdaterat ordet.");
     }
 
     public static void deleteWord(EntityManager entityManager, Scanner scanner){
-        System.out.println("Vilket ord vill du ta bort? (Ange id)");
+        System.out.println("Vilket ord vill du ta bort? (Ange ID).");
         String id = scanner.nextLine();
         entityManager.getTransaction().begin();
         WordEntity word = entityManager.find( WordEntity.class, Integer.parseInt(id));
@@ -64,7 +64,7 @@ public class WordCrud {
         entityManager.remove( word );
         entityManager.getTransaction().commit();
 
-        System.out.println("Du har tagit bort ordet");
+        System.out.println("Du har tagit bort ordet.");
     }
 
     public static void showAllWord(EntityManager entityManager){

@@ -48,9 +48,9 @@ public class UserCrud {
 
         List<UserEntity> list = query.getResultList( );
         for( UserEntity u:list ){
-            System.out.print("username:" + u.getUsername());
-            System.out.println("\t points:" + u.getPoints());
-            System.out.println("\t id:"+ u.getUserId());
+            System.out.print("Användarnamn: " + u.getUsername());
+            System.out.print("\t Poäng: " + u.getPoints());
+            System.out.println("\t ID: "+ u.getUserId());
         }
     }
 
@@ -61,12 +61,12 @@ public class UserCrud {
         UserEntity user = entityManager.find( UserEntity.class, Integer.parseInt(scanner.nextLine()));
         System.out.println("Skriv ditt nya användarnamn: ");
         user.setUsername(scanner.nextLine());
-        System.out.println("skriv in ditt nya lösenord");
+        System.out.println("Skriv in ditt nya lösenord: ");
         user.setUserPassword(scanner.nextLine());
         entityManager.persist(user);
         entityManager.getTransaction().commit();
 
-        System.out.println("Du har uppdaterat profilen");
+        System.out.println("Du har uppdaterat profilen.");
 
     }
     public static void updatePoints(int points, int id){

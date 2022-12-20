@@ -91,7 +91,7 @@ public class WordEntity {
 
     @Override
     public String toString() {
-        return "Id: " + wordId +
+        return  " Id: " + wordId +
                 " Ord: " + wordName +
                 " Översättning: " + wordAnswer +
                 " Språk: " + languageByWordLanguageId;
