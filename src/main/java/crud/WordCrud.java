@@ -85,7 +85,7 @@ public class WordCrud {
     }
 
     public static void showWord(EntityManager entityManager, Scanner scanner){
-        System.out.println("Skriv in ordet du vill se: ");
+        System.out.println("Skriv in ordet du vill se (Svenska): ");
         String wordInput = scanner.nextLine();
 
         Query query = entityManager.createNamedQuery("wordQuery");

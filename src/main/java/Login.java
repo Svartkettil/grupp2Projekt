@@ -4,8 +4,8 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 import java.util.Scanner;
-
 public class Login {
+    public static String activeUser;
     public static Scanner scanner = new Scanner(System.in);
     public static String login(EntityManager entityManager){
         System.out.println("skriv in användarnamn");

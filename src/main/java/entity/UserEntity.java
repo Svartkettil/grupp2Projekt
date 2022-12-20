@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user", schema = "glosor")
+@NamedQuery(query = "SELECT u from UserEntity u WHERE u.username = :username", name = "UsernameQuery")
+@NamedQuery(query = "SELECT u from UserEntity u", name = "userQuery")
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -74,4 +76,13 @@ public class UserEntity {
         result = 31 * result + (userPassword != null ? userPassword.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return  " AnvändarID: " + userId +
+                " Användarnamn: " + username +
+                " Poäng: " + points +
+                " Lösenord: " + userPassword;
+    }
 }
+

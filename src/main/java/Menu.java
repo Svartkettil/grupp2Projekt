@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class Menu {
     public static Scanner scanner = new Scanner(System.in);
-
     private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
     private static EntityManager entityManager = entityManagerFactory.createEntityManager();
 
@@ -21,17 +20,15 @@ public class Menu {
 
     public static void userMenu(){
         int input=-1;
-        UserCrud usercrud = new UserCrud(entityManager);
         while (input!=0){
             printUserMenu();
             input = Integer.parseInt(scanner.nextLine());
             switch (input){
                 case 1 -> usercrud.newUserInput();
-                case 2 -> usercrud.showUser();
-                case 3 -> usercrud.showAllUsers();
-                case 4 -> usercrud.updateUser();
-                case 5 -> usercrud.deleteUser();
-                case 6 -> usercrud.countUsersQuery();
+                case 2 -> usercrud.showAllUsers();
+                case 3 -> usercrud.updateUser();
+                case 4 -> usercrud.deleteUser();
+                case 5 -> usercrud.countUsersQuery();
                 case 0 -> System.out.println("Lämnar användarmenyn");
             }
         }
@@ -125,11 +122,10 @@ public class Menu {
     public static void printUserMenu(){
         System.out.println("""
                 1. Skapa ny användare
-                2. Visa användare
-                3. Visa alla användare
-                4. Ändra användare
-                5. Ta bort användare
-                6. Antal användare
+                2. Visa alla användare
+                3. Ändra användare
+                4. Ta bort användare
+                5. Antal användare
                 0. Gå ifrån menyn
                 """);
     }
@@ -141,6 +137,7 @@ public class Menu {
                 4. Uppdatera namn på språk
                 5. Utrota ett språk
                 6. Antal språk
+                0. Backa
                 """);
     }
     public static void printMainMenu(){
@@ -149,8 +146,9 @@ public class Menu {
                 2. Språkmeny
                 3. Meningsmeny
                 4. Ordmeny
-                5. Quiz
-                6. logga in
+                5. OrdQuiz
+                6. MeningQuiz
+                7. Rankad användarmeny
                 0. Avsluta program
                 """);
     }

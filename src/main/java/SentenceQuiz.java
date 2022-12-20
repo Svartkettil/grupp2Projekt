@@ -19,6 +19,7 @@ public class SentenceQuiz {
     }
     public static int points = 0;
     public static void askQuizQuestions(EntityManager entityManager){
+        points=0;
         Login.login(entityManager);
         ArrayList<SentenceEntity> languageFilter = chooseLanguage(entityManager);
         for( SentenceEntity w:languageFilter){
@@ -31,7 +32,7 @@ public class SentenceQuiz {
             else System.out.println("Fel svar! Rätt svar är " + w.getSentenceAnswer());
         }
         System.out.println("Du fick " + points + " poäng!");
-        addPointsTouser(points, entityManager);
+        addPointsToUser(points, entityManager);
     }
 
     private static ArrayList<SentenceEntity> chooseLanguage(EntityManager entityManager) {
@@ -47,10 +48,11 @@ public class SentenceQuiz {
     public static boolean wordIsTrue(String answer, String rightAnswer) {
         return answer.equalsIgnoreCase(rightAnswer);
     }
-    public static void addPointsTouser(int points, EntityManager entityManager){
+    public static void addPointsToUser(int points, EntityManager entityManager){
         if(!Login.activeUser.equals("")){
             UserCrud.updatePoints(points, UserCrud.findUserByName(Login.activeUser));
         }
+
     }
 
 }

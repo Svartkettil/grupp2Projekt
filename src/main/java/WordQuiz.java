@@ -18,6 +18,7 @@ public class WordQuiz {
     }
     public static int points = 0;
     public static void askQuizQuestions(EntityManager entityManager){
+        points=0;
         Login.login(entityManager);
         Query query = entityManager.createNamedQuery("wordQuery");
 
@@ -46,6 +47,7 @@ public class WordQuiz {
         if(!Login.activeUser.equals("")){
             UserCrud.updatePoints(points, UserCrud.findUserByName(Login.activeUser));
         }
+        points=0;
     }
 
 }
