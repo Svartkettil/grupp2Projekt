@@ -74,4 +74,11 @@ public class RankingEntity {
         result = 31 * result + (rankUserId != null ? rankUserId.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return  " RankId: " + rankId +
+                " Användare: " + userName +
+                " Rank: " + rankName;
+    }
 }

@@ -9,11 +9,11 @@
         <class>entity.SentenceEntity</class>
         <class>entity.UserEntity</class>
         <class>entity.WordEntity</class>
+        <class>entity.RankingEntity</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/glosor"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.connection.username" value="root"/>
-            <property name="hibernate.connection.password" value="Skog4309"/>
         </properties>
     </persistence-unit>
 </persistence>
