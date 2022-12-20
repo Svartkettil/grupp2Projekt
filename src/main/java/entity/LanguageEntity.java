@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
+@NamedQuery(query = "SELECT l FROM LanguageEntity l", name = "languageQuery")
 @Table(name = "language", schema = "glosor")
 public class LanguageEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
