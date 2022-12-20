@@ -12,6 +12,8 @@ public class Menu {
     public static Scanner scanner = new Scanner(System.in);
     private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
     private static EntityManager entityManager = entityManagerFactory.createEntityManager();
+    public static UserCrud usercrud = new UserCrud(entityManager);
+    private WordQuiz quiz = new WordQuiz(entityManager);
 
     public static void main(String[] args) {
         mainMenu();

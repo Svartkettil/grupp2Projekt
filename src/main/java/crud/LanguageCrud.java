@@ -34,8 +34,8 @@ public class LanguageCrud {
         List<LanguageEntity> list = query.getResultList( );
 
         for( LanguageEntity l:list ){
-            System.out.println("SpråkID: " + l.getLanguageId() + "\n" +
-                    "Språk: " + l.getLanguageName());
+            System.out.println("ID: " + l.getLanguageId() +
+                    " Språk: " + l.getLanguageName());
         }
     }
     public static void showLanguageInput(EntityManager entityManager, Scanner scanner){
